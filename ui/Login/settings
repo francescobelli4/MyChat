@@ -1,0 +1,12 @@
+[re/sonny/Workbench]
+show-console=true
+maximized=true
+show-code=true
+show-style=true
+edited=true
+name='Login'
+show-preview=true
+show-ui=true
+user-interface-language='blueprint'
+auto-preview=true
+safe-mode=true

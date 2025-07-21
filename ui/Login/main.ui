@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="background">
+    <property name="orientation">1</property>
+    <property name="valign">3</property>
+    <property name="halign">3</property>
+    <style>
+      <class name="background"/>
+    </style>
+    <child>
+      <object class="GtkBox" id="loginform">
+        <style>
+          <class name="loginform"/>
+        </style>
+        <property name="orientation">1</property>
+        <property name="spacing">20</property>
+        <child>
+          <object class="GtkBox" id="modeselector">
+            <property name="orientation">0</property>
+            <property name="spacing">40</property>
+            <child>
+              <object class="GtkButton" id="login_mode_btn">
+                <property name="has-frame">false</property>
+                <property name="label" translatable="yes">Login</property>
+                <property name="focus-on-click">false</property>
+                <style>
+                  <class name="login_mode_btn"/>
+                  <class name="mode_active"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="register_mode_btn">
+                <property name="has-frame">false</property>
+                <property name="label" translatable="yes">Register</property>
+                <property name="focus-on-click">false</property>
+                <style>
+                  <class name="login_mode_btn"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStack" id="login_mode_stack">
+            <property name="hhomogeneous">true</property>
+            <property name="transition-type">1</property>
+            <child>
+              <object class="GtkStackPage" id="login_page">
+                <property name="name">login_page</property>
+                <property name="child">
+                  <object class="GtkBox" id="login_mode_form">
+                    <property name="name">login_mode_form</property>
+                    <style>
+                      <class name="mode_form"/>
+                    </style>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">palle</property>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage" id="register_page">
+                <property name="name">register_page</property>
+                <property name="child">
+                  <object class="GtkBox" id="register_mode_form">
+                    <property name="name">register_mode_form</property>
+                    <style>
+                      <class name="mode_form"/>
+                    </style>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">culo</property>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

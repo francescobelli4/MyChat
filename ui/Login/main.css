@@ -1,0 +1,40 @@
+label {
+  color: white;
+  font-weight: 700;
+}
+
+.background {
+  background-color: #222831;
+}
+
+.loginform {
+  background-color: #31363f;
+  padding: 20px;
+
+  border-radius: 10px;
+}
+
+.login_mode_btn {
+  padding: 10px;
+
+  min-width: 100px;
+
+  transition: background-color 250ms ease-in-out;
+
+  border-radius: 10px;
+}
+
+.login_mode_btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.mode_active {
+  background-color: #76abae;
+}
+
+.mode_form {
+  background-color: red;
+  
+  min-width: 100px;
+  min-height: 100px;
+}

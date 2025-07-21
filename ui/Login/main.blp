@@ -1,0 +1,83 @@
+using Gtk 4.0;
+
+Box background {
+  orientation: vertical;
+  valign: center;
+  halign: center;
+
+  styles [
+    "background",
+  ]
+
+  Box loginform {
+    styles [
+      "loginform",
+    ]
+
+    orientation: vertical;
+    spacing: 20;
+
+    Box modeselector {
+      orientation: horizontal;
+      spacing: 40;
+
+      Button login_mode_btn {
+        has-frame: false;
+        label: _("Login");
+        focus-on-click: false;
+
+        styles [
+          "login_mode_btn",
+          "mode_active",
+        ]
+      }
+
+      Button register_mode_btn {
+        has-frame: false;
+        label: _("Register");
+        focus-on-click: false;
+
+        styles [
+          "login_mode_btn",
+        ]
+      }
+    }
+
+    Stack login_mode_stack {
+      hhomogeneous: true;
+      transition-type: crossfade;
+
+      StackPage login_page {
+        name: "login_page";
+
+        child: Box login_mode_form {
+          name: "login_mode_form";
+
+          styles [
+            "mode_form",
+          ]
+
+          Label {
+            label: _("palle");
+          }
+        };
+      }
+
+      StackPage register_page {
+        name: "register_page";
+
+        child: Box register_mode_form {
+          name: "register_mode_form";
+
+          styles [
+            "mode_form",
+          ]
+
+          Label {
+            label: _("culo");
+          }
+        };
+      }
+    }
+  }
+}
