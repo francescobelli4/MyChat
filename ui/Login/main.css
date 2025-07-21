@@ -1,8 +1,3 @@
-label {
-  color: white;
-  font-weight: 700;
-}
-
 .background {
   background-color: #222831;
 }
@@ -22,6 +17,10 @@ label {
   transition: background-color 250ms ease-in-out;
 
   border-radius: 10px;
+
+  font-size: 20px;
+
+  color: white;
 }
 
 .login_mode_btn:hover {
@@ -33,8 +32,46 @@ label {
 }
 
 .mode_form {
-  background-color: red;
-  
   min-width: 100px;
-  min-height: 100px;
+}
+
+.text_input {
+  background-color: #222831;
+
+  border-radius: 10px;
+
+  color: white;
+  font-weight: 600;
+
+  padding: 5px 5px 5px 25px;
+  min-height: 50px;
+}
+
+.google_login {
+  border: black 1px solid;
+
+  padding: 12px;
+
+  background-color: white;
+  border-radius: 30px;
+  color: #303030;
+
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+.google_login:hover {
+  background-color: #ebebeb;
+}
+
+.join_button {
+  padding: 5px;
+  min-height: 50px;
+
+  background-color: #76abae;
+
+  color: white;
+  font-size: 20px;
+
+  border-radius: 10px;
 }

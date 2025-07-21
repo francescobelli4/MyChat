@@ -15,7 +15,7 @@ Box background {
     ]
 
     orientation: vertical;
-    spacing: 20;
+    spacing: 30;
 
     Box modeselector {
       orientation: horizontal;
@@ -25,6 +25,7 @@ Box background {
         has-frame: false;
         label: _("Login");
         focus-on-click: false;
+        hexpand: true;
 
         styles [
           "login_mode_btn",
@@ -36,6 +37,7 @@ Box background {
         has-frame: false;
         label: _("Register");
         focus-on-click: false;
+        hexpand: true;
 
         styles [
           "login_mode_btn",
@@ -46,19 +48,80 @@ Box background {
     Stack login_mode_stack {
       hhomogeneous: true;
       transition-type: crossfade;
+      vexpand: true;
 
       StackPage login_page {
         name: "login_page";
 
         child: Box login_mode_form {
           name: "login_mode_form";
+          orientation: vertical;
+          spacing: 10;
 
           styles [
             "mode_form",
           ]
 
-          Label {
-            label: _("palle");
+          Entry {
+            enable-emoji-completion: false;
+            has-frame: false;
+            max-length: 30;
+            placeholder-text: _("Username or email");
+            width-chars: 30;
+            hexpand: true;
+
+            styles [
+              "text_input",
+            ]
+          }
+
+          Entry {
+            enable-emoji-completion: false;
+            has-frame: false;
+            max-length: 30;
+            placeholder-text: _("Password");
+            width-chars: 30;
+            hexpand: true;
+            visibility: false;
+
+            styles [
+              "text_input",
+            ]
+          }
+
+          Button {
+            label: _("Join");
+            has-frame: false;
+
+            styles [
+              "join_button",
+            ]
+          }
+
+          Button {
+            has-frame: false;
+            margin-start: 25;
+            margin-end: 25;
+            margin-top: 20;
+
+            styles [
+              "google_login",
+            ]
+
+            child: Box {
+              orientation: horizontal;
+
+              Image {
+                icon-name: "search";
+                pixel-size: 26;
+                margin-end: 20;
+                margin-start: 4;
+              }
+
+              Label {
+                label: _("Sign in with Google");
+              }
+            };
           }
         };
       }
@@ -68,16 +131,91 @@ Box background {
 
         child: Box register_mode_form {
           name: "register_mode_form";
+          orientation: vertical;
+          spacing: 10;
 
           styles [
             "mode_form",
           ]
 
-          Label {
-            label: _("culo");
+          Entry {
+            enable-emoji-completion: false;
+            has-frame: false;
+            max-length: 30;
+            placeholder-text: _("Username");
+            width-chars: 30;
+            hexpand: true;
+
+            styles [
+              "text_input",
+            ]
+          }
+
+          Entry {
+            enable-emoji-completion: false;
+            has-frame: false;
+            max-length: 30;
+            placeholder-text: _("Email");
+            width-chars: 30;
+            hexpand: true;
+
+            styles [
+              "text_input",
+            ]
+          }
+
+          Entry {
+            enable-emoji-completion: false;
+            has-frame: false;
+            max-length: 30;
+            placeholder-text: _("Password");
+            width-chars: 30;
+            hexpand: true;
+            visibility: false;
+
+            styles [
+              "text_input",
+            ]
+          }
+
+          Button {
+            label: _("Join");
+            has-frame: false;
+
+            styles [
+              "join_button",
+            ]
+          }
+
+          Button {
+            has-frame: false;
+            margin-start: 25;
+            margin-end: 25;
+            margin-top: 20;
+
+            styles [
+              "google_login",
+            ]
+
+            child: Box {
+              orientation: horizontal;
+
+              Image {
+                icon-name: "search";
+                pixel-size: 26;
+                margin-end: 20;
+                margin-start: 4;
+              }
+
+              Label {
+                label: _("Sign in with Google");
+              }
+            };
           }
         };
       }
+
+      visible-child-name: "register_page";
     }
   }
 }

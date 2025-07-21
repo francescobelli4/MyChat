@@ -1,7 +1,7 @@
 [re/sonny/Workbench]
 show-console=true
 maximized=true
-show-code=true
+show-code=false
 show-style=true
 edited=true
 name='Login'

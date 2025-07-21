@@ -14,7 +14,7 @@
           <class name="loginform"/>
         </style>
         <property name="orientation">1</property>
-        <property name="spacing">20</property>
+        <property name="spacing">30</property>
         <child>
           <object class="GtkBox" id="modeselector">
             <property name="orientation">0</property>
@@ -24,6 +24,7 @@
                 <property name="has-frame">false</property>
                 <property name="label" translatable="yes">Login</property>
                 <property name="focus-on-click">false</property>
+                <property name="hexpand">true</property>
                 <style>
                   <class name="login_mode_btn"/>
                   <class name="mode_active"/>
@@ -35,6 +36,7 @@
                 <property name="has-frame">false</property>
                 <property name="label" translatable="yes">Register</property>
                 <property name="focus-on-click">false</property>
+                <property name="hexpand">true</property>
                 <style>
                   <class name="login_mode_btn"/>
                 </style>
@@ -46,18 +48,81 @@
           <object class="GtkStack" id="login_mode_stack">
             <property name="hhomogeneous">true</property>
             <property name="transition-type">1</property>
+            <property name="vexpand">true</property>
             <child>
               <object class="GtkStackPage" id="login_page">
                 <property name="name">login_page</property>
                 <property name="child">
                   <object class="GtkBox" id="login_mode_form">
                     <property name="name">login_mode_form</property>
+                    <property name="orientation">1</property>
+                    <property name="spacing">10</property>
                     <style>
                       <class name="mode_form"/>
                     </style>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">palle</property>
+                      <object class="GtkEntry">
+                        <property name="enable-emoji-completion">false</property>
+                        <property name="has-frame">false</property>
+                        <property name="max-length">30</property>
+                        <property name="placeholder-text" translatable="yes">Username or email</property>
+                        <property name="width-chars">30</property>
+                        <property name="hexpand">true</property>
+                        <style>
+                          <class name="text_input"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkEntry">
+                        <property name="enable-emoji-completion">false</property>
+                        <property name="has-frame">false</property>
+                        <property name="max-length">30</property>
+                        <property name="placeholder-text" translatable="yes">Password</property>
+                        <property name="width-chars">30</property>
+                        <property name="hexpand">true</property>
+                        <property name="visibility">false</property>
+                        <style>
+                          <class name="text_input"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Join</property>
+                        <property name="has-frame">false</property>
+                        <style>
+                          <class name="join_button"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="has-frame">false</property>
+                        <property name="margin-start">25</property>
+                        <property name="margin-end">25</property>
+                        <property name="margin-top">20</property>
+                        <style>
+                          <class name="google_login"/>
+                        </style>
+                        <property name="child">
+                          <object class="GtkBox">
+                            <property name="orientation">0</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="icon-name">search</property>
+                                <property name="pixel-size">26</property>
+                                <property name="margin-end">20</property>
+                                <property name="margin-start">4</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Sign in with Google</property>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
                       </object>
                     </child>
                   </object>
@@ -70,18 +135,94 @@
                 <property name="child">
                   <object class="GtkBox" id="register_mode_form">
                     <property name="name">register_mode_form</property>
+                    <property name="orientation">1</property>
+                    <property name="spacing">10</property>
                     <style>
                       <class name="mode_form"/>
                     </style>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">culo</property>
+                      <object class="GtkEntry">
+                        <property name="enable-emoji-completion">false</property>
+                        <property name="has-frame">false</property>
+                        <property name="max-length">30</property>
+                        <property name="placeholder-text" translatable="yes">Username</property>
+                        <property name="width-chars">30</property>
+                        <property name="hexpand">true</property>
+                        <style>
+                          <class name="text_input"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkEntry">
+                        <property name="enable-emoji-completion">false</property>
+                        <property name="has-frame">false</property>
+                        <property name="max-length">30</property>
+                        <property name="placeholder-text" translatable="yes">Email</property>
+                        <property name="width-chars">30</property>
+                        <property name="hexpand">true</property>
+                        <style>
+                          <class name="text_input"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkEntry">
+                        <property name="enable-emoji-completion">false</property>
+                        <property name="has-frame">false</property>
+                        <property name="max-length">30</property>
+                        <property name="placeholder-text" translatable="yes">Password</property>
+                        <property name="width-chars">30</property>
+                        <property name="hexpand">true</property>
+                        <property name="visibility">false</property>
+                        <style>
+                          <class name="text_input"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label" translatable="yes">Join</property>
+                        <property name="has-frame">false</property>
+                        <style>
+                          <class name="join_button"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="has-frame">false</property>
+                        <property name="margin-start">25</property>
+                        <property name="margin-end">25</property>
+                        <property name="margin-top">20</property>
+                        <style>
+                          <class name="google_login"/>
+                        </style>
+                        <property name="child">
+                          <object class="GtkBox">
+                            <property name="orientation">0</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="icon-name">search</property>
+                                <property name="pixel-size">26</property>
+                                <property name="margin-end">20</property>
+                                <property name="margin-start">4</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Sign in with Google</property>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
                       </object>
                     </child>
                   </object>
                 </property>
               </object>
             </child>
+            <property name="visible-child-name">register_page</property>
           </object>
         </child>
       </object>
