@@ -1,1 +1,9 @@
-ESCLUDERE.txt
+EXCLUDE.txt
+
+.cache/
+.vscode/
+bin/*
+!bin/**/
+
+*.o
+*.out
