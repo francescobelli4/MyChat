@@ -97,11 +97,12 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton">
+                      <object class="GtkButton" id="login_mode_google">
                         <property name="has-frame">false</property>
                         <property name="margin-start">25</property>
                         <property name="margin-end">25</property>
                         <property name="margin-top">20</property>
+                        <property name="focus-on-click">false</property>
                         <style>
                           <class name="google_login"/>
                         </style>
@@ -192,6 +193,7 @@
                     <child>
                       <object class="GtkButton">
                         <property name="has-frame">false</property>
+                        <property name="focus-on-click">false</property>
                         <property name="margin-start">25</property>
                         <property name="margin-end">25</property>
                         <property name="margin-top">20</property>
@@ -222,7 +224,7 @@
                 </property>
               </object>
             </child>
-            <property name="visible-child-name">register_page</property>
+            <property name="visible-child-name">login_page</property>
           </object>
         </child>
       </object>

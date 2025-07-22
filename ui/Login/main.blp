@@ -98,11 +98,12 @@ Box background {
             ]
           }
 
-          Button {
+          Button login_mode_google {
             has-frame: false;
             margin-start: 25;
             margin-end: 25;
             margin-top: 20;
+            focus-on-click: false;
 
             styles [
               "google_login",
@@ -189,6 +190,7 @@ Box background {
 
           Button {
             has-frame: false;
+            focus-on-click: false;
             margin-start: 25;
             margin-end: 25;
             margin-top: 20;
@@ -215,7 +217,7 @@ Box background {
         };
       }
 
-      visible-child-name: "register_page";
+      visible-child-name: "login_page";
     }
   }
 }
