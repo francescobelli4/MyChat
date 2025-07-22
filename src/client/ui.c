@@ -3,7 +3,7 @@
 #include "glib-object.h"
 #include <gtk/gtk.h>
 
-#include "login/ui_login.h"
+#include "login.h"
 
 GtkApplication *app;
 GtkWindow *window;
@@ -31,7 +31,8 @@ static void on_activate() {
     	
 	setup_application_window();
 
-	display_login();
+	printf("starting login...\n");
+	login_handler();
 	
 	gtk_window_set_application(window, app);
 	

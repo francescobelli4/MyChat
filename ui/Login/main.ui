@@ -14,7 +14,7 @@
           <class name="loginform"/>
         </style>
         <property name="orientation">1</property>
-        <property name="spacing">30</property>
+        <property name="spacing">20</property>
         <child>
           <object class="GtkBox" id="modeselector">
             <property name="orientation">0</property>
@@ -49,6 +49,23 @@
             <property name="hhomogeneous">true</property>
             <property name="transition-type">1</property>
             <property name="vexpand">true</property>
+            <child>
+              <object class="GtkStackPage" id="waiting_for_google_page">
+                <property name="name">waiting_for_google_page</property>
+                <property name="child">
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Check your browser to login using Google and then come back here!</property>
+                    <property name="wrap">true</property>
+                    <property name="wrap-mode">2</property>
+                    <property name="width-request">20</property>
+                    <property name="max-width-chars">20</property>
+                    <style>
+                      <class name="login_comunication_big"/>
+                    </style>
+                  </object>
+                </property>
+              </object>
+            </child>
             <child>
               <object class="GtkStackPage" id="login_page">
                 <property name="name">login_page</property>

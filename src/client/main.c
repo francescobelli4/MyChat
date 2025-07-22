@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 #include "../shared/shared.h"
-#include "ui/ui.h"
+#include "ui.h"
 
 int main(int argc, char **argv)
 {

@@ -15,7 +15,7 @@ Box background {
     ]
 
     orientation: vertical;
-    spacing: 30;
+    spacing: 20;
 
     Box modeselector {
       orientation: horizontal;
@@ -49,6 +49,22 @@ Box background {
       hhomogeneous: true;
       transition-type: crossfade;
       vexpand: true;
+
+      StackPage waiting_for_google_page {
+        name: "waiting_for_google_page";
+
+        child: Label {
+          label: _("Check your browser to login using Google and then come back here!");
+          wrap: true;
+          wrap-mode: word_char;
+          width-request: 20;
+          max-width-chars: 20;
+
+          styles [
+            "login_comunication_big",
+          ]
+        };
+      }
 
       StackPage login_page {
         name: "login_page";
