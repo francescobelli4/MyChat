@@ -9,4 +9,4 @@ show-preview=true
 show-ui=true
 user-interface-language='blueprint'
 auto-preview=true
-safe-mode=false
+safe-mode=true

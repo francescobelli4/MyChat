@@ -128,7 +128,7 @@
                             <property name="orientation">0</property>
                             <child>
                               <object class="GtkImage">
-                                <property name="file">search-png</property>
+                                <property name="resource">/re/sonny/Workbench/icons/scalable/actions/search.png</property>
                                 <property name="pixel-size">26</property>
                                 <property name="margin-end">20</property>
                                 <property name="margin-start">4</property>
@@ -222,7 +222,6 @@
                             <property name="orientation">0</property>
                             <child>
                               <object class="GtkImage">
-                                <property name="icon-name">search</property>
                                 <property name="pixel-size">26</property>
                                 <property name="margin-end">20</property>
                                 <property name="margin-start">4</property>

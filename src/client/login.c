@@ -87,6 +87,18 @@ void login_mode_btn_clicked(GtkButton *button, gpointer arg) {
  */
 void display_login() {
 	
+	// Loading icons :D
+	GError *error = NULL;
+	GResource *resource = g_resource_load("ui/Login/icons.gresource", &error);
+	if (!resource) {
+    		g_printerr("Failed to load gresource: %s\n", error->message);
+    		g_error_free(error);
+    		return;
+	}
+
+	g_resources_register(resource);
+
+
 	// Using the builder, an XML file can be parsed to get widgets defined in that XML file
 	builder = gtk_builder_new_from_file("ui/Login/main.ui");
 
