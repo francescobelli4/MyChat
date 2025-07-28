@@ -2,11 +2,11 @@
 show-console=true
 maximized=true
 show-code=false
-show-style=true
+show-style=false
 edited=true
 name='Login'
 show-preview=true
 show-ui=true
 user-interface-language='blueprint'
 auto-preview=true
-safe-mode=true
+safe-mode=false
