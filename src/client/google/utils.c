@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <pthread.h>
 #include <threads.h>
 #include <gtk/gtk.h>
 #include <sys/socket.h>
@@ -7,15 +8,20 @@
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 #include <json-c/json.h>
+#include <unistd.h>
 
 #include "../../shared/shared.h"
 
 pthread_t http_server;
 
+// This mutex is used to sync the main thread and this one. When the login is finished, the main thread has to duplicate the email string, so it does not get lost.
+// This mutex gives time to do that.
+pthread_mutex_t sync_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 /*
  *	This function performs an HTTPS GET REQUEST to google to retreive the user's email
  */
-const char *get_user_email(const char *access_token) {
+char *get_user_email(char *access_token) {
 
 	struct hostent *host = gethostbyname("www.googleapis.com");
 
@@ -95,7 +101,7 @@ const char *get_user_email(const char *access_token) {
 
 	struct json_object *parsed;
 	struct json_object *parsed_email;
-	const char *email;
+	char *email;
 
 	parsed = json_tokener_parse(json_start);
 
@@ -105,7 +111,6 @@ const char *get_user_email(const char *access_token) {
 
 	// Freeing memory
 	json_object_put(parsed);
-	json_object_put(parsed_email);
 
 	free(request);
 	free(buffer);
@@ -129,7 +134,7 @@ const char *get_user_email(const char *access_token) {
  *	Google's oauth2 answer is sent in "chunked" mode, so I will need more "reads" to retrieive the full message. The esiest
  *	method to reach the end of the whole message, is reading until I find "\r\n0\r\n\r\n", which means that the message is over.
  */
-const char *get_access_token(char *authorization_code) {
+char *get_access_token(char *authorization_code) {
 
 	char *client_secret = getenv("GOOGLE_CLIENT_SECRET");
 	struct hostent *host = gethostbyname("oauth2.googleapis.com");
@@ -228,11 +233,10 @@ const char *get_access_token(char *authorization_code) {
 	parsed = json_tokener_parse(json_start);
 
 	json_object_object_get_ex(parsed, "access_token", &parsed_access_token);
-	const char *access_token = strdup(json_object_get_string(parsed_access_token));
+	char *access_token = strdup(json_object_get_string(parsed_access_token));
 
 	// Freeing memory
 	json_object_put(parsed);
-	json_object_put(parsed_access_token);
 
 	free(request);
 	free(body);
@@ -337,6 +341,10 @@ char *get_authorization_code() {
 		return NULL;
 	}
 
+	// Allowing to immediately re-use the address: otherwise the app will crash in the next launch because the kernel can take some seconds to close the socket
+	int opt = 1;
+	setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
 	if (bind(server_socket, (struct sockaddr *)&server_address, sizeof(server_address))) {
 
 		perror("failed binding authorization server socket");
@@ -419,15 +427,19 @@ void *perform_google_login_communication(void *callback) {
 	char *authorization_code = get_authorization_code();
 	printf("Received authorization code: [%s]\n", authorization_code);
 
-	const char *access_token = get_access_token(authorization_code);
+	char *access_token = get_access_token(authorization_code);
 	printf("Received access token: [%s]\n", access_token);
 
-	//g_idle_add(on_code_received, (gpointer *) authorization_code);
-	const char *email = get_user_email(access_token);
+	char *email = get_user_email(access_token);
 	printf("Received email: [%s]\n", email);
 
-	g_idle_add(access_complete_callback, (gpointer *) email);
+	pthread_mutex_init(&sync_mutex, NULL);
+	pthread_mutex_lock(&sync_mutex);
 
+	g_idle_add(access_complete_callback, email);
+
+	pthread_mutex_lock(&sync_mutex);
+	
 	return NULL;
 }
 
@@ -472,6 +484,6 @@ void google_button_clicked(GtkWidget *widget, gpointer user_data) {
 	// GTK app will crash.
 	pthread_create(&http_server, NULL, perform_google_login_communication, (void *)&(arg->callback));
 
-	pthread_detach(http_server);
+	//pthread_detach(http_server);
 }
 

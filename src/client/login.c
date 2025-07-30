@@ -29,16 +29,20 @@ GtkBuilder *builder;
  *	This function should now make the user set a password if server never saved a password for this email. Otherwise, just log in.
  */
 gboolean on_google_authentication_complete(gpointer data) {
-	
-	char *email = (char *) data;
+
+	char *email = strdup((char *) data);
+
 	printf("Email: %s\n", email);
     
-	GtkStack *stack = GTK_STACK(gtk_builder_get_object(builder, "login_mode_stack"));
+	//GtkStack *stack = GTK_STACK(gtk_builder_get_object(builder, "login_mode_stack"));
 
 	// if emailnotfound
     	//	gtk_stack_set_visible_child_name(stack, "google_login_success");
 	// else
 	//	login_complete
+	//
+
+	pthread_mutex_unlock(&sync_mutex);
 
     	return FALSE;  
 }
