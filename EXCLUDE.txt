@@ -1,4 +1,0 @@
-id client = 1007096808449-g570r0cbkktk1cpnsf915vk1lviujamq.apps.googleusercontent.com
-client secret = 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
-
-exmp: https://accounts.google.com/o/oauth2/v2/auth?client_id=1007096808449-g570r0cbkktk1cpnsf915vk1lviujamq.apps.googleusercontent.com&redirect_uri=http://localhost:8080&response_type=code&scope=email%20profile&access_type=offline
