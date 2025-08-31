@@ -30,9 +30,11 @@ GtkBuilder *builder;
  */
 gboolean on_google_authentication_complete(gpointer data) {
 
+
 	char *email = strdup((char *) data);
 
 	printf("Email: %s\n", email);
+
     
 	//GtkStack *stack = GTK_STACK(gtk_builder_get_object(builder, "login_mode_stack"));
 

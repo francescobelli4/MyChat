@@ -1,4 +1,5 @@
 test.txt
+EXCLUDE.txt
 
 .cache/
 .vscode/
